@@ -1,24 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useRef, useEffect } from 'react';
+import { TweenMax, Power3, Bounce } from 'gsap';
+
 import './App.css';
 
 function App() {
+  let heroRef = useRef(null);
+
+  useEffect(() => {
+    console.log(heroRef);
+
+    TweenMax.from(heroRef, 3, {
+      opacity: 0,
+      x: -800,
+      ease: Bounce.easeOut,
+    });
+  }, [heroRef]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div
+        ref={(el) => {
+          heroRef = el;
+        }}
+        className="hero"
+      ></div>
     </div>
   );
 }
