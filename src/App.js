@@ -1,29 +1,20 @@
 import React, { useRef, useEffect } from 'react';
-import { TweenMax, Power3, Bounce } from 'gsap';
+import { TweenLite } from 'gsap';
 
 import './App.css';
+import FirstGsap from './components/FirstGsap';
+import SecondGasp from './components/SecondGasp';
 
 function App() {
-  let heroRef = useRef(null);
+  let appRef = useRef(null);
 
   useEffect(() => {
-    console.log(heroRef);
-
-    TweenMax.from(heroRef, 3, {
-      opacity: 0,
-      x: -800,
-      ease: Bounce.easeOut,
-    });
-  }, [heroRef]);
+    TweenLite.to(appRef, 0, { css: { visibility: 'visible' } });
+  }, []);
 
   return (
-    <div className="App">
-      <div
-        ref={(el) => {
-          heroRef = el;
-        }}
-        className="hero"
-      ></div>
+    <div ref={(el) => (appRef = el)} className="App">
+      <SecondGasp />
     </div>
   );
 }

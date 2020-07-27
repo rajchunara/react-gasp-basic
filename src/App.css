@@ -5,10 +5,27 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  visibility: hidden;
 }
 
 .hero {
   width: 200px;
   height: 200px;
   background-color: darkorange;
+}
+
+.circle {
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  background-color: #fdcf51;
+  margin-top: 50px;
+}
+
+.circle.red {
+  background-color: tomato;
+}
+
+.circle.blue {
+  background-color: cornflowerblue;
 }
